@@ -7,7 +7,7 @@
 
 point = int(input())
 
-if point >= 90 and point <= 100:
+if 90 <= point <= 100:
     print("A")
 elif point >= 80:
     print("B")
@@ -16,4 +16,4 @@ elif point >= 70:
 elif point >= 60:
     print("D")
 else:
-    print("E")
+    print("F")
