@@ -5,7 +5,7 @@
 제목 : 소수 찾기
 """
 
-def isDecimal(num):
+def isPrime(num):
     if num == 1:
         return False
     div = 2
@@ -21,6 +21,6 @@ numList = [int(x) for x in input().split()]
 
 count = 0
 for num in numList:
-    if isDecimal(num):
+    if isPrime(num):
         count += 1
 print(count)
