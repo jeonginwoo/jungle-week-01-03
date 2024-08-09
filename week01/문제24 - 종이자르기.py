@@ -17,8 +17,8 @@ for _ in range(N):
         col.append(idx)
 col.sort()
 row.sort()
-col += [width]
-row += [height]
+col.append(width)
+row.append(height)
 area = []
 
 for c in range(1, len(col)):

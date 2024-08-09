@@ -1,1 +1,3 @@
-print(1,2,3, sep="+")
+s = set({})
+s.add(1)
+print(s)
