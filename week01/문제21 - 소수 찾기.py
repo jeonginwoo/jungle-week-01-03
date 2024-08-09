@@ -9,7 +9,7 @@ def isDecimal(num):
     if num == 1:
         return False
     div = 2
-    half = num/2
+    half = num//2
     while div <= half:
         if num % div == 0:
             return False
