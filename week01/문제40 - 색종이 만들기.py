@@ -7,6 +7,7 @@
 
 
 def splitPaper(N, lu, rd):
+    global paper, count
     cnt0 = 0
     cnt1 = 0
     for i in range(lu[0], rd[0] + 1):
