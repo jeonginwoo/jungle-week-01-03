@@ -13,7 +13,7 @@ def diffSum(numList):
     return sum
 
 
-def shuffle(n, numList, shuf, maxSum):
+def maxOrder(n, numList, shuf, maxSum):
     if n == 0:
         maxSum[0] = max(maxSum[0], diffSum(shuf))
         return
@@ -21,7 +21,7 @@ def shuffle(n, numList, shuf, maxSum):
         tempNumList = numList[:]
         tempShuf = shuf[:]
         tempShuf.append(tempNumList.pop(num))
-        shuffle(n - 1, tempNumList, tempShuf, maxSum)
+        maxOrder(n - 1, tempNumList, tempShuf, maxSum)
 
 
 N = int(input())
@@ -30,5 +30,5 @@ numList = [int(x) for x in input().split()]
 temp = numList[:]
 shuf = []
 maxSum = [0]
-shuffle(N, numList, shuf, maxSum)
+maxOrder(N, numList, shuf, maxSum)
 print(maxSum[0])
