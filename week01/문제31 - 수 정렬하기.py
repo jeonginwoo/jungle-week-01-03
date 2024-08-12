@@ -6,11 +6,20 @@
 """
 
 
+def quickSort(numList, first, last):
+    p = numList[first]
+    left = first + 1
+    right = last
+    while left <= right:
+
+    return
+
+
 N = int(input())
 numList = []
 for _ in range(N):
     numList.append(int(input()))
 
-numList.sort()
+quickSort(numList)
 for num in numList:
     print(num)
