@@ -22,7 +22,6 @@ def redixSort(numList, compareQueue):
         for i in range(10):
             while len(compareQueue[i]) != 0:
                 numList.append(compareQueue[i].popleft())
-    return
 
 
 N = int(input())
