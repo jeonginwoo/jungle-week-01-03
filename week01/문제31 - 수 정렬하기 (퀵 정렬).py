@@ -7,6 +7,7 @@
 
 import sys
 
+input = sys.stdin.read
 sys.setrecursionlimit(15000)
 
 
@@ -29,11 +30,9 @@ def quickSort(numList, first, last):
     quickSort(numList, first, right - 1)
     quickSort(numList, left, last)
 
-
-N = int(input())
-numList = []
-for _ in range(N):
-    numList.append(int(input()))
+data = input().split()
+N = int(data[0])
+numList = list(map(int, data[1:]))
 quickSort(numList, 0, N - 1)
 for num in numList:
     print(num)

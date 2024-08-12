@@ -8,6 +8,9 @@
 # 시간 초과
 
 from collections import deque
+import sys
+
+input = sys.stdin.read
 
 
 def redixSort(numList, compareQueue):
@@ -24,14 +27,13 @@ def redixSort(numList, compareQueue):
                 numList.append(compareQueue[i].popleft())
 
 
-N = int(input())
-numList = []
+data = input().split()
+N = int(data[0])
+numList = list(map(int, data[1:]))
 compareQueue = []
 for i in range(10):
     compareQueue.append(deque())
 
-for _ in range(N):
-    numList.append(int(input()))
 redixSort(numList, compareQueue)
 for num in numList:
     print(num)
