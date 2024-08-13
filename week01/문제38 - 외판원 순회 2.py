@@ -29,9 +29,11 @@ def dfs(now, dist, i):
 N = int(input())
 lines = sys.stdin.read().splitlines()
 W = [list(map(int, line.split())) for line in lines]
+
 cityList = [x for x in range(N)]
 visited = [False] * N
 firstCity = None
 minDist = float("inf")
+
 dfs(None, 0, 0)
 print(minDist)
