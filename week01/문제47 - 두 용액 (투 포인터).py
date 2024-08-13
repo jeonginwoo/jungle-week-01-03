@@ -28,7 +28,5 @@ while left < right:
     elif sum > 0:
         right -= 1
     else:
-        minLeft = left
-        minRight = right
         break
 print(arr[minLeft], arr[minRight])
