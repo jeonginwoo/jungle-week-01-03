@@ -7,8 +7,6 @@
 
 import sys
 
-lines = sys.stdin.read().splitlines()
-
 
 def dfs(i, result):
     global N, A_list, count, maxResult, minResult
@@ -36,6 +34,7 @@ def dfs(i, result):
             count[3] += 1
 
 
+lines = sys.stdin.read().splitlines()
 N = int(lines[0])
 A_list = list(map(int, lines[1].split()))
 count = list(map(int, lines[2].split()))
