@@ -9,27 +9,25 @@ import sys
 
 lines = sys.stdin.read().splitlines()
 N = int(lines[0])
-arr = sorted([int(x) for x in lines[1].split()])
+X = sorted(list(map(int, lines[1].split())))
 
-minSum = float("inf")
-minLeft = 0
-minRight = N-1
-
+liquid = [None, None]
+minMix = float('inf')
 for i in range(N - 1):
     start = i + 1
     end = N - 1
     while start <= end:
         mid = (start + end) // 2
-        sum = arr[i] + arr[mid]
-        if minSum > abs(sum):
-            minSum = abs(sum)
-            minLeft = arr[i]
-            minRight = arr[mid]
-        if sum < 0:
+        mix = X[i] + X[mid]
+        if minMix > abs(mix):
+            minMix = abs(mix)
+            liquid[0] = X[i]
+            liquid[1] = X[mid]
+        if mix < 0:
             start = mid + 1
-        elif sum > 0:
+        elif mix > 0:
             end = mid - 1
         else:
             break
-print(minLeft, minRight)
+print(liquid[0], liquid[1])
 
