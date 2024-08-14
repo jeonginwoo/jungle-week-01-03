@@ -8,32 +8,32 @@
 import sys
 
 
-def dfs(now, dist, i):
-    global N, W, cityList, visited, firstCity, minDist
-    if i == 0:
-        for city in cityList:
-            visited[city] = True
-            firstCity = city
-            dfs(city, 0, i + 1)
-    else:
-        if i == N:
-            if W[now][firstCity] != 0:
-                minDist = min(minDist, dist + W[now][firstCity])
-        for next in cityList:
+def travel(i, now, cost):
+    global N, W, first_city, visited, minCost
+
+    if i == N:
+        if W[now][first_city] != 0:
+            minCost = min(minCost, cost + W[now][first_city])
+        return
+
+    for next in range(N):
+        if i == 0:
+            first_city = next
+            visited[next] = True
+            travel(i + 1, next, 0)
+            visited[next] = False
+        else:
             if not visited[next] and W[now][next] != 0:
                 visited[next] = True
-                dfs(next, dist + W[now][next], i + 1)
+                travel(i + 1, next, cost + W[now][next])
                 visited[next] = False
 
 
 N = int(input())
-lines = sys.stdin.read().splitlines()
-W = [list(map(int, line.split())) for line in lines]
-
-cityList = [x for x in range(N)]
+W = [list(map(int, line.split())) for line in sys.stdin.read().splitlines()]
+first_city = None
 visited = [False] * N
-firstCity = None
-minDist = float("inf")
+minCost = float('inf')
+travel(0, None, 0)
+print(minCost)
 
-dfs(None, 0, 0)
-print(minDist)
