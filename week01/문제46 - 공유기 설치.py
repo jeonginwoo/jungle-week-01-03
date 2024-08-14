@@ -8,21 +8,18 @@
 import sys
 
 N, C = map(int, input().split())
-listX = sorted([int(x) for x in sys.stdin.read().split()])
-start = 1
-end = listX[-1] - listX[0]
+X = sorted(int(line) for line in sys.stdin.read().split())
 result = 0
+
+start = 1
+end = X[-1] - X[0]
 while start <= end:
     mid = (start + end) // 2
-
     count = 1
-    dist = 0
-    now = listX[0]
+    now = X[0]
     for i in range(1, N):
-        dist = listX[i] - now
-        if dist >= mid:
-            dist = 0
-            now = listX[i]
+        if X[i] - now >= mid:
+            now = X[i]
             count += 1
     if count >= C:
         result = mid
