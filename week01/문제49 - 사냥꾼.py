@@ -10,7 +10,7 @@ import sys
 
 def area(animal):
     global L
-    if L >= animal[1]:
+    if animal[1] <= L:
         left = L - animal[1]
         return [animal[0] - left, animal[0] + left]
     return None
@@ -23,15 +23,15 @@ A = [list(map(int, line.split())) for line in lines[2:]]
 
 count = 0
 for animal in A:
-    huntArea = area(animal)
-    if huntArea != None:
+    hunt_area = area(animal)
+    if hunt_area != None:
         start = 0
         end = M - 1
         while start <= end:
             mid = (start + end) // 2
-            if H[mid] < huntArea[0]:
+            if H[mid] < hunt_area[0]:
                 start = mid + 1
-            elif H[mid] > huntArea[1]:
+            elif H[mid] > hunt_area[1]:
                 end = mid - 1
             else:
                 count += 1
