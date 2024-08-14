@@ -12,29 +12,25 @@
 #         print()
 #     print()
 
-def set(col):
-    global N, checkRow, checkLineA, checkLineB, count
-    for row in range(N):
-        if (not checkRow[row]
-                and not checkLineA[col - row + N - 1]
-                and not checkLineB[col + row]):
-            # pos[col] = row
-            if col == N - 1:
+def queen(i):
+    global N, line1, line2, line3, count
+    for j in range(N):
+        if not line1[j] and not line2[i + j] and not line3[i - j + N - 1]:
+            # pos[i] = j
+            if i == N - 1:
                 count += 1
                 # put()
             else:
-                checkRow[row] = checkLineA[col - row + N - 1] = checkLineB[col + row] = True
-                set(col + 1)
-                checkRow[row] = checkLineA[col - row + N - 1] = checkLineB[col + row] = False
+                line1[j] = line2[i + j] = line3[i - j + N - 1] = True
+                queen(i+1)
+                line1[j] = line2[i + j] = line3[i - j + N - 1] = False
 
 
 N = int(input())
-
 # pos = [0] * N
-checkRow = [False] * N
-checkLineA = [False] * (2 * N - 1)  # 대각선 a
-checkLineB = [False] * (2 * N - 1)  # 대각선 b
+line1 = [False] * N
+line2 = [False] * (2 * N - 1)
+line3 = [False] * (2 * N - 1)
 count = 0
-
-set(col=0)
+queen(0)
 print(count)
