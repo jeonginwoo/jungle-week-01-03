@@ -7,7 +7,6 @@
 
 
 def hanoi(N, now, next):
-    global moveList
     if N == 0:
         return
     hanoi(N - 1, now, 6 - now - next)
@@ -16,7 +15,6 @@ def hanoi(N, now, next):
 
 
 N = int(input())
-moveList = []
 print(2**N - 1)
 if N <= 20:
     hanoi(N, 1, 3)
