@@ -9,8 +9,6 @@ import heapq
 import sys
 input = sys.stdin.readline
 
-def makeMaxHeap(L):
-
 
 N = int(input())
 max_heap = []
