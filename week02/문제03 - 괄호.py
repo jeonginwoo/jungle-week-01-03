@@ -11,10 +11,10 @@ input = sys.stdin.readline
 
 def isVPS(str):
     stack = []
-    for i in range(len(str)-1):
-        if str[i] == "(":
-            stack.append(str[i])
-        elif str[i] == ")":
+    for s in str:
+        if s == "(":
+            stack.append(s)
+        elif s == ")":
             if len(stack) == 0:
                 return False
             stack.pop()
@@ -27,4 +27,4 @@ def isVPS(str):
 T = int(input())
 
 for _ in range(T):
-    print("YES" if isVPS(input()) else "NO")
+    print("YES" if isVPS(input().strip()) else "NO")
