@@ -17,10 +17,7 @@ def DFS(edges, V):
         if not visited[v]:
             visited[v] = True
             visit.append(v)
-            next_list = edges[v]
-            for next in range(len(next_list)-1, -1, -1):
-                if not visited[next_list[next]]:
-                    stack.append(next_list[next])
+            stack += edges[v][::-1]
     return visit
 
 def BFS(edges, V):
@@ -49,5 +46,5 @@ for i in range(M):
     edges[arr[1]].append(arr[0])
 for i in range(1, N+1):
     edges[i].sort()
-print(*DFS(edges, V), sep=" ")
-print(*BFS(edges, V), sep=" ")
+print(*DFS(edges, V))
+print(*BFS(edges, V))
