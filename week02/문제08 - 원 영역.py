@@ -28,6 +28,7 @@ def BFS():
     return count
 
 
+# 부모 찾기
 def find(i):
     check = circle_list[i][1]
     while len(stack) > 0:
@@ -38,8 +39,11 @@ def find(i):
 
 
 N = int(input())
+# 원 입력을 x좌표 구간으로 변경
 circle_list = [[c[0] - c[1], c[0] + c[1]] for c in (list(map(int, input().split())) for i in range(N))]
+# 구간 왼쪽에 대해서 오름차순, 구간 오른쪽에 대해서 내림차순으로 정렬
 circle_list.sort(key=lambda x: (x[0], -x[1]))
+# 정렬된 리스트의 인덱스가 각 원의 번호 (0번은 전체 구간)
 circle_list = [[-float("inf"), float("inf")]] + circle_list
 
 edges = [[] for _ in range(N + 1)]
