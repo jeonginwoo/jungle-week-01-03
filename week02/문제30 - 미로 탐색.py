@@ -16,21 +16,19 @@ def BFS():
     dy = [1, 0, -1, 0]
     queue = deque()
     queue.append((0, 0))
-    miro[0][0] = 0
-    count[0][0] = 1
     while queue:
         now = queue.popleft()
         for go in range(4):
             next_x = now[0] + dx[go]
             next_y = now[1] + dy[go]
-            if 0 <= next_x < N and 0 <= next_y < M and miro[next_x][next_y] == 1:
+            if 0 <= next_x < N and 0 <= next_y < M and miro[next_x][next_y] == 1 and (next_x, next_y) != (0, 0):
                 queue.append((next_x, next_y))
-                miro[next_x][next_y] = 0
-                count[next_x][next_y] = count[now[0]][now[1]] + 1
-    return count[N - 1][M - 1]
+                miro[next_x][next_y] = miro[now[0]][now[1]] + 1
 
 
 N, M = map(int, input().split())
 miro = [[int(x) for x in input().strip()] for _ in range(N)]
 count = [[0] * M for _ in range(N)]
-print(BFS())
+BFS()
+print(miro[-1][-1])
+
