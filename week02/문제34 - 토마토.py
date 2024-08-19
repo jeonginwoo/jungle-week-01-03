@@ -16,16 +16,16 @@ def BFS():
     dy = [0, 1, 0, -1, 0, 0]
     dz = [0, 0, 0, 0, -1, 1]
     day = 0
-    visited = [[[0] * M for _ in range(N)] for __ in range(H)]
+    count = [[[0] * M for _ in range(N)] for __ in range(H)]
     queue = deque()
     for z in range(H):
         for y in range(N):
             for x in range(M):
                 if box[z][y][x] == 1:
                     queue.append([x, y, z])
-                    visited[z][y][x] = 1
+                    count[z][y][x] = 1
                 if box[z][y][x] == -1:
-                    visited[z][y][x] = -1
+                    count[z][y][x] = -1
     while queue:
         now_x, now_y, now_z = queue.popleft()
         for go in range(6):
@@ -35,15 +35,14 @@ def BFS():
             if (0 <= next_x < M
                     and 0 <= next_y < N
                     and 0 <= next_z < H
-                    and visited[next_z][next_y][next_x] == 0
-                    and visited[next_z][next_y][next_x] != -1):
-                visited[next_z][next_y][next_x] = visited[now_z][now_y][now_x] + 1
+                    and not count[next_z][next_y][next_x]):
+                count[next_z][next_y][next_x] = count[now_z][now_y][now_x] + 1
                 queue.append([next_x, next_y, next_z])
-        day = visited[now_z][now_y][now_x] - 1
+        day = count[now_z][now_y][now_x] - 1
     for z in range(H):
         for y in range(N):
             for x in range(M):
-                if visited[z][y][x] == 0:
+                if count[z][y][x] == 0:
                     return -1
     return day
 
