@@ -1,7 +1,15 @@
+"""
+출처 : 백준
+번호 : 3055
+난이도 : 골드 4
+제목 : 탈출
+"""
+
 import sys
 from collections import deque
 
 input = sys.stdin.readline
+
 
 def BFS():
     dx = [0, 1, 0, -1]
@@ -40,6 +48,7 @@ def BFS():
                         queue_s.append((next_sx, next_sy))
 
     return "KAKTUS"
+
 
 R, C = map(int, input().split())
 grid = [list(input().strip()) for _ in range(R)]
