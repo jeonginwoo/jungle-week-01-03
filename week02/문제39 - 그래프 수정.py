@@ -9,12 +9,6 @@ import sys
 import heapq
 input = sys.stdin.readline
 
-def find(arr):
-    for i in range(N):
-        if arr[i] == 1:
-            return i+1
-    return 0
-
 N = int(input())
 arr = [[int(x) for x in input().strip()] for _ in range(N)]
 
