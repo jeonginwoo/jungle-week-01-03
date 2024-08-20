@@ -46,10 +46,7 @@ def DFS():
             count += 1
         for x, y in start:
             bingsan[x][y] = max(bingsan[x][y] - melt_count[x][y], 0)
-        for i in range(N):
-            print(bingsan[i])
 
-        print(year, count)
         if count >= 2:
             return year
         year += 1
