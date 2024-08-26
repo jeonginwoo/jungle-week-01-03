@@ -11,10 +11,8 @@ input = sys.stdin.readline
 
 N, K = map(int, input().split())
 info = [list(map(int, input().split())) for _ in range(N)]
-max_v = sum(item[1] for item in info)
 
 dp = [[0]*(K+1) for _ in range(N+1)]
-
 for i in range(1, N+1):
     weight, value = info[i-1]
     for w in range(K+1):
