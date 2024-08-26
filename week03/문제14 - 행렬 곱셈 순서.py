@@ -20,8 +20,6 @@ for i in range(1, N):
         left, right = j - i, j
         dp[left][right] = float("inf")
         for k in range(left, right):
-            cost = dp[left][k] + dp[k+1][right] + matrices[left][0] * matrices[k][1] * matrices[right][1]
-            if cost < dp[left][right]:
-                dp[left][right] = cost
+            dp[left][right] = min(dp[left][right], dp[left][k] + dp[k+1][right] + matrices[left][0] * matrices[k][1] * matrices[right][1])
 
 print(dp[0][N - 1])
